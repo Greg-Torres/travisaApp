@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="850eee48-7eb9-4974-95a9-f0aadecc6801">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FECHAVENTA" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     v."idventa",
+     v."total",
+     c."nombre",
+     u."nombre_usuario"
+FROM
+     "venta" v INNER JOIN "cliente" c ON v."idcliente" = c."idcliente"
+     INNER JOIN "usuario" u ON v."idusuario" = u."idusuario"
+where v.fecha= $P{FECHAVENTA}]]>
+	</queryString>
+	<field name="idventa" class="java.lang.Integer"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="nombre_usuario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement x="31" y="30" width="305" height="37" forecolor="#0000CC" uuid="f78e9b4f-a072-4f83-85fc-c32832d5ce15"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial Black" size="24"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE VENTAS ]]></text>
+			</staticText>
+			<image scaleImage="RealSize" hAlign="Center" vAlign="Middle" isUsingCache="true">
+				<reportElement mode="Opaque" x="336" y="0" width="202" height="67" uuid="90e15032-3fef-4c85-ab83-09ad8b3370d0"/>
+				<imageExpression><![CDATA["D:\\practicando java\\TravisaAppv5backup\\src\\pe\\eth\\Travisaapp\\img\\travisa\\travisa.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="21" y="0" width="122" height="20" uuid="c417bb1a-6254-40cd-89be-a6da8f791f8e"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo de Venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="171" y="0" width="122" height="20" uuid="1689c3c7-552d-404d-b8bb-25347af17904"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Monto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="0" width="122" height="20" uuid="7861a754-a7cc-48b2-b0f0-d5cb4f467f64"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="b28c1aab-dd9e-4df8-80fe-22fdd43748d0"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[usuario]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<line>
+				<reportElement x="10" y="0" width="545" height="1" backcolor="#000000" uuid="4cc5de70-a38b-4fd2-b254-1ac92009a8f2"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="21" y="9" width="100" height="20" uuid="bba05bc8-fcb3-4fdb-886f-386a3fe2471e"/>
+				<textFieldExpression><![CDATA[$F{idventa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="171" y="9" width="100" height="20" uuid="982b31b0-9c0a-4bb7-8463-29d3961d0a10"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="314" y="9" width="100" height="20" uuid="bd626695-d2e4-4c1c-84cb-ffb2649d3905"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="9" width="100" height="20" uuid="bfe9c0ac-bad8-49d0-b8e5-d721b1ec292c"/>
+				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

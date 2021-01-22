@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="369e16a4-16d2-4060-8877-a98a24c279e7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FECHAVENTA" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     VENTA."IDVENTA",
+     VENTA."IDCLIENTE",
+     VENTA."IDUSUARIO",
+     VENTA."TOTAL"
+FROM
+     "VENTA" VENTA
+WHERE VENTA."FECHA" = $P{FECHAVENTA}]]>
+	</queryString>
+	<field name="IDVENTA" class="java.math.BigDecimal"/>
+	<field name="IDCLIENTE" class="java.lang.String"/>
+	<field name="IDEMPLEADO" class="java.lang.String"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="112" y="11" width="386" height="48" forecolor="#0099CC" uuid="03637343-33f2-446d-9657-2a0a07ec7f94"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[TRAVISA2 VENTAS POR FECHA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="44" y="2" width="100" height="20" uuid="32da463e-e69e-43b0-8efb-409800ce24f0"/>
+				<text><![CDATA[IDVENTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="2" width="100" height="20" uuid="83228edf-3f92-4cf7-9bfb-5e8e4b828055"/>
+				<text><![CDATA[IDCLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="2" width="100" height="20" uuid="176baed3-00d0-4c0a-aef1-cc8fa24d7ca9"/>
+				<text><![CDATA[IDUSUARIO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="19" y="32" width="515" height="1" uuid="062b6ca0-1d72-4acd-9f6b-2f4e1d4c1687"/>
+			</line>
+			<staticText>
+				<reportElement x="434" y="2" width="100" height="20" uuid="9015f9e0-6e20-4088-b2eb-808179de709e"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement x="44" y="7" width="100" height="20" uuid="c67f1d0d-8d0a-449a-b2f5-13e67c1418d3"/>
+				<textFieldExpression><![CDATA[$F{IDVENTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="7" width="100" height="20" uuid="2849edda-bb68-40cf-bca2-4d9428a814fe"/>
+				<textFieldExpression><![CDATA[$F{IDCLIENTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="5" width="100" height="20" uuid="518a4339-9292-4c24-ab4f-376b83b691e0"/>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="295" y="5" width="100" height="20" uuid="5df89dec-6a05-43bd-88e2-f183f5253ddd"/>
+				<textFieldExpression><![CDATA[$F{IDEMPLEADO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
